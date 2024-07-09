@@ -28,14 +28,66 @@
     // Some and Every Checks
     // Array.prototype.some() // is at least one person 19 or older?
     // Array.prototype.every() // is everyone 19 or older?
+    const isAdult = people.some((person) => {
+      currentYear = (new Date()).getFullYear();
+      return (currentYear - person.year >= 19)
+    });
+    // console.log({isAdult});
+
+    const allAdult = people.every((person) => {
+      currentYear = (new Date()).getFullYear();
+      return (currentYear - person.year >= 19)
+    });
+    // console.log({allAdult});
 
     // Array.prototype.find()
     // Find is like filter, but instead returns just the one you are looking for
     // find the comment with the ID of 823423
+    const comment = comments.find((comment) => (comment.id === 823423));
+    // console.log(comment);
 
     // Array.prototype.findIndex()
     // Find the comment with this ID
-    // delete the comment with the ID of 823423
+    // delete the comment with the ID of 823423    
+    const index = comments.findIndex((comment) => comment.id === 823423);
+    // console.log(index);
+    comments.splice(index, 1);
+
+    let arr = [1, 2];
+
+    let arrayLike = {
+      0: "something",
+      length: 1
+    };
+
+    // console.log( arr.concat(arrayLike) );
+
+    function groupById(arr) {
+      return arr.reduce((id, item) => {
+        id[item.id] = item;
+        return id;
+      }, {});
+    }
+
+    let users = [
+      {id: 'john', name: "John Smith", age: 20},
+      {id: 'ann', name: "Ann Smith", age: 24},
+      {id: 'pete', name: "Pete Peterson", age: 31},
+    ];
+
+    let usersById = groupById(users);
+    console.log(usersById);
+
+    /*
+    // after the call we should have:
+
+    usersById = {
+      john: {id: 'john', name: "John Smith", age: 20},
+      ann: {id: 'ann', name: "Ann Smith", age: 24},
+      pete: {id: 'pete', name: "Pete Peterson", age: 31},
+    }
+    */
+
 
   </script>
 </body>
